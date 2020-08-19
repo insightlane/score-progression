@@ -1,0 +1,10 @@
+input_files/
+output_files/
+
+*.csv
+*.xlsx
+*.Rproj
+*.RData
+*.Rhistory
+*.png
+*Rproj*
