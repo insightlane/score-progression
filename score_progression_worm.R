@@ -48,7 +48,7 @@ download.file("https://afltables.com/afl/stats/times.csv", destfile="times.csv")
 
 # Load CSV file
 
-raw_score_progression <- read.csv("C:/Local documents/Analysis/Game times/times.csv", 
+raw_score_progression <- read.csv("C:/Local Code/insightlane/score-progression/times.csv", 
                   header = FALSE,
                   stringsAsFactors = FALSE)
 
@@ -431,7 +431,7 @@ colnames(flipped_score_progression) <- c("GameID", "Quarter", "Dateadj", "Team1"
 
 score_progression_worm <- rbind(original_score_progression, flipped_score_progression)
 
-rm(flipped_score_progression, prescore, qtrlengths, qtrstarts, team1scores, team2scores, scores, times)
+rm(flipped_score_progression, prescore, qtrlengths, qtrstarts, team1scores, team2scores, raw_score_progression, raw_match_scores)
 
 # -----------------------------------------------------------------------------------------------
 # 11. Output CSV files
