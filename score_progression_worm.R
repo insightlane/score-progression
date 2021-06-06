@@ -6,7 +6,7 @@
 # AUTHOR: InsightLane
 #
 # CREATED:   Original 2016
-# MODIFIED:  Last updated 2020 
+# MODIFIED:  Last updated 2021
 #
 # INPUTS:    Time series score data from AFL Tables (https://afltables.com/afl/stats/times.csv)
 #
@@ -117,6 +117,10 @@ match_scores$Venue <- trimws(as.character(match_scores$Venue), which = "right")
 match_scores$Team1 <- ifelse((match_scores$Team1 == "GW Sydney"), "Greater Western Sydney", match_scores$Team1)
 match_scores$Team2 <- ifelse((match_scores$Team2 == "GW Sydney"), "Greater Western Sydney", match_scores$Team2)
 
+
+match_scores$Team1 <- ifelse((match_scores$Team1 == "Kangaroos"), "North Melbourne", match_scores$Team1)
+match_scores$Team2 <- ifelse((match_scores$Team2 == "Kangaroos"), "North Melbourne", match_scores$Team2)
+
 # Create new column for margin (relative to team 1) for each match
 
 match_scores$Team1FinalMargin <- match_scores$Team1Points - match_scores$Team2Points 
@@ -206,7 +210,11 @@ prescore$Event <- "PS"
 
 original_score_progression <- rbind(original_score_progression, qtrstarts, prescore)
 
+original_score_progression$Timescore <- ifelse((original_score_progression$Event == "F"), original_score_progression$Timescore + 1, original_score_progression$Timescore)
+
 original_score_progression <- original_score_progression[order(original_score_progression$GameID, original_score_progression$Quarter, original_score_progression$Timescore), ]
+
+original_score_progression$Timescore <- ifelse((original_score_progression$Event == "F"), original_score_progression$Timescore - 1, original_score_progression$Timescore)
 
 rownames(original_score_progression) <- NULL
 

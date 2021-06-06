@@ -7,4 +7,6 @@ output_files/
 *.RData
 *.Rhistory
 *.png
+*.twb*
 *Rproj*
+.Rproj.user
